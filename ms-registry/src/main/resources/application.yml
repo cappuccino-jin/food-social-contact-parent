@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ms-registry
+
+# 配置 Eureka Server 注册中心
+eureka:
+  client:
+    # Eureka默认开启自我注册，单节点设置为false，否则会报错
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
