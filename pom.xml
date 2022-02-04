@@ -12,6 +12,8 @@
         <module>ms-registry</module>
         <module>ms-gateway</module>
         <module>ms-diners</module>
+        <module>commons</module>
+        <module>ms-oauth2-server</module>
     </modules>
 
     <!-- 可以集中定义依赖资源的版本信息 -->
@@ -76,6 +78,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.25</version>
                 <scope>runtime</scope>
             </dependency>
             <!-- hutool 依赖 -->
@@ -101,6 +104,7 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.6.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
