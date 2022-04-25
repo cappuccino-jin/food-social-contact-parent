@@ -14,7 +14,53 @@ spring:
         - id: ms-diners
           uri: lb://ms-diners
           predicates:
-            - Path=/hello/**
+            - Path=/diners/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/diners  保留：/**
+
+        - id: ms-oauth2-server
+          uri: lb://ms-oauth2-server
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/auth  保留：/**
+
+        - id: ms-seckill
+          uri: lb://ms-seckill
+          predicates:
+            - Path=/seckill/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/seckill  保留：/**
+
+        - id: ms-follow
+          uri: lb://ms-follow
+          predicates:
+            - Path=/follow/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/follow  保留：/**
+
+        - id: ms-feeds
+          uri: lb://ms-feeds
+          predicates:
+            - Path=/feeds/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/feeds  保留：/**
+
+        - id: ms-points
+          uri: lb://ms-points
+          predicates:
+            - Path=/points/**
+          filters:
+            - StripPrefix=1  # 路由分割   去掉：/points  保留：/**
+
+secure:
+  ignore:
+    urls: # 配置白名单路径
+      - /actuator/**
+      - /auth/oauth/**
+      - /diners/signin
+      - /diners/send
+      - /seckill/add
 
 # 配置 Eureka Server 注册中心
 eureka:
@@ -24,3 +70,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/
+
+logging:
+  pattern:
+    console: '%d{HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n'
