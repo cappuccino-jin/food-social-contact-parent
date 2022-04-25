@@ -80,4 +80,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // 其他请求必须认证才能访问
                 .anyRequest().authenticated();
     }
+
 }
